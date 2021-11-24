@@ -14,6 +14,7 @@ dMaxObstacle = 450;
 
 function setup() {
   mode = "training";
+  //mode = "singleRun"; iptal
   displayBrain = true;
   paused = false;
 

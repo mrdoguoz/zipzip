@@ -1,7 +1,7 @@
 function keyPressed() {
     // reset
     if (key === "r" || key === "R") {
-      sliderSimSpeed.remove();
+      sliderSimSpeed.remove();//Tüm p5 çizimini kaldır.
       setup();
     }
   
