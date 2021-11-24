@@ -28,6 +28,8 @@ function setup() {
   avgFrameRate = frameRate();
 
   cam = new Camera(createVector(width / 2, height / 2), createVector(0, -80));
+  //console.log(createVector(width / 2, height / 2)) x: 350 y: 275 z: 0
+  //console.log(createVector(0, -80)) x: 0 y: -80 z: 0 
   terrain = new Terrain();
   ga = new geneticAlgorithm();
   balls = [];
