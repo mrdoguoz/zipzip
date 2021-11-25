@@ -1,6 +1,6 @@
 function makeText(str, x, y, alignHorizontal, alignVertical) {
-    fill(255);
-    noStroke();
+    fill(255);//Sets the color used to fill shapes.
+    noStroke(); //Disables drawing the stroke (outline). If both noStroke() and noFill() are called, nothing will be drawn to the screen.
     textSize(14);
     textAlign(alignHorizontal, alignVertical);
     text(str, x, y);
@@ -16,11 +16,11 @@ function makeText(str, x, y, alignHorizontal, alignVertical) {
     return max;
   }
   
-  function findFirstBall(state) {
+  function findFirstBall(state) {//top seçme
     var first;
     var maxDist = -Infinity;
   
-    switch (state) {
+    switch (state) { 
       case "alive":
         for (let b of balls) {
           if (b.alive) {
@@ -72,7 +72,7 @@ function makeText(str, x, y, alignHorizontal, alignVertical) {
   }
   
   
-  function updateFrameRate() {
+  function updateFrameRate() { //sketch kullanıyor
     let lArray = 30;
     if (logFrameRate.length >= lArray) {
       logFrameRate.splice(0, 1);
@@ -96,9 +96,9 @@ function makeText(str, x, y, alignHorizontal, alignVertical) {
     let b1 = 10;
   
     if (mode == "training") {
-      r = round(map(cam.visXMin, 0, xMaxDifficulty, r0, r1));
-      g = round(map(cam.visXMin, 0, xMaxDifficulty, g0, g1));
-      b = round(map(cam.visXMin, 0, xMaxDifficulty, b0, b1));
+      r = round(map(cam.visXMin, 0, xMaxDifficulty, r0, r1)); //https://p5js.org/reference/#/p5/map r0<r<r1
+      g = round(map(cam.visXMin, 0, xMaxDifficulty, g0, g1)); //Bir sayıyı bir aralıktan diğerine yeniden eşler. g0<g<g1
+      b = round(map(cam.visXMin, 0, xMaxDifficulty, b0, b1)); b0<b<b1
   
       if (cam.visXMin < 0) {
         r = r0;

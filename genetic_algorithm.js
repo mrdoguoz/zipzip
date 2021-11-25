@@ -17,7 +17,7 @@ class geneticAlgorithm {
   
     calcFitness() {
       this.highestFitness = 0;
-      this.lowestFitness = Infinity;
+      this.lowestFitness = Infinity; //sonsuz
   
       // calculates fitness of each ball; all fitness levels add up to 1
       let sum = 0;
@@ -40,9 +40,8 @@ class geneticAlgorithm {
     }
   
     makeNewBall() {
-      // "father" of a new ball is picked randomly from old generation
-      // balls with high fitness value are more likely to get picked
-      // https://www.youtube.com/watch?v=YtRA6tqgJBc&t=525s 24:00
+      // "father" of a new ball is picked randomly from old generation   Yeni bir topun "babası" eski nesilden rastgele seçilir
+      // balls with high fitness value are more likely to get picked     uygunluk değeri yüksek topların seçilme olasılığı daha yüksektir
       let r = random();
       let i;
       while (r > 0) {

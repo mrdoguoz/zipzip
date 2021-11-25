@@ -2,15 +2,27 @@
 class NeuralNetwork {
     constructor(argument) {
       if (argument instanceof NeuralNetwork) {
-        this.structure = argument.structure;
-        this.nLayers = this.structure.length;
+        this.structure = argument.structure; //(3) [3, 7, 5]
+        this.nLayers = this.structure.length; //3
+        
   
-        this.weights = new Array(this.nLayers - 1); // stores weights of each layer
+        this.weights = new Array(this.nLayers - 1); // stores weights of each layer her katmanın ağırlıklarını saklar
         for (let i = 0; i < this.weights.length; i++) {
           this.weights[i] = argument.weights[i].copy();
         }
   
         this.biases = new Array(this.nLayers - 1);
+         //0: Matrix
+        /*
+        data: Array(7)
+        0: [-1.4417615523978944]
+        1: [2.4622232971579927]
+        2: [0.7535341932916759]
+        3: [0.29854067733838074]
+        4: [-0.2584348063756312]
+        5: [-0.09246574951700115]
+        6: [1.2410926041658357]
+        */
         for (let i = 0; i < this.biases.length; i++) {
           this.biases[i] = argument.biases[i].copy();
         }
@@ -36,7 +48,6 @@ class NeuralNetwork {
     feedForward(inputArray, targetLayer) {
       let weights = this.weights[targetLayer - 1];
       let biases = this.biases[targetLayer - 1];
-  
       let inputs = Matrix.fromArray(inputArray);
       let outputs = Matrix.dot(weights, inputs);
       outputs.add(biases);
@@ -51,7 +62,7 @@ class NeuralNetwork {
   
       let errors = new Array(this.nLayers - 1); // create array with fixed length because it gets filled backwards
   
-      // feedForward through all layers
+      // feedForward through all layers ileri beslemeyi fonsiyonun kendisi ile yapıyoruz
       for (let i = 0; i < this.nLayers - 1; i++) {
         outputs_unmapped.push(this.feedForward(input, i + 1));
         outputs.push(Matrix.mapArray(outputs_unmapped[i], sigmoid));
@@ -79,7 +90,7 @@ class NeuralNetwork {
           errors[i] = Matrix.dot(weights_trans, errors[i + 1]);
         }
   
-        // calculate gradients
+        // calculate gradients gradyanları fonksıyonun turevi ile hesaplıyoruz
         gradients = Matrix.fromArray(Matrix.mapArray(outputs_unmapped[i], dSigmoid));
         gradients.multiply(errors[i]);
         gradients.multiply(this.learningRate);
@@ -126,7 +137,7 @@ class NeuralNetwork {
       // adjust weights
       function mutate(x) {
         if (random() < rate) {
-          let offset = randomGaussian() * strength;
+          let offset = randomGaussian() * strength; //https://p5js.org/reference/#/p5/randomGaussian
           let newx = x + offset;
           return newx;
         } else {

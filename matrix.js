@@ -157,11 +157,12 @@ class Matrix {
       }
     }
   
-    static mapArray(array, fn) {
+    static mapArray(array, fn) { //aktivasyon fonksiyonunu ve turevini burada kullanıyoruz
       let result = new Array(array.length);
       // receives an array and a function
       for (let i = 0; i < array.length; i++) {
         result[i] = fn(array[i]);
+        console.log(result[i])
       }
   
       // returns an array
@@ -172,7 +173,7 @@ class Matrix {
       // apply a function to every element of matrix
       for (let i = 0; i < this.nRows; i++) {
         for (let j = 0; j < this.nCols; j++) {
-          let val = this.data[i][j];
+          let val = this.data[i][j];  
           this.data[i][j] = fn(val);
         }
       }

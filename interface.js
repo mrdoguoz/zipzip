@@ -221,8 +221,8 @@ function displayAll() {
   function displayMap(x, y, w, h) {
     makeText("relative ball locations:", x + 2, y - 7, LEFT, BOTTOM);
   
-    let realXLast = findLastBall("all").loc.x;
-    let realXFirst = findFirstBall("all").loc.x;
+    let realXLast = findLastBall("all").loc.x; //misc de
+    let realXFirst = findFirstBall("all").loc.x; //misc de
     let realMaxDist;
   
     if (realXLast < 0) {
